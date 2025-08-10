@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import RegisterPage from "../components/RegisterPage";
 import LoginPage from "../components/LoginPage";
 import Layout from "../components/Layout";
+import CategoryNav from "../components/CategoryNav";
 
 export const myRoutes = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ export const myRoutes = createBrowserRouter([
     children: [
       {
         index: true, // ✅ This is the default route
-        element: <RegisterPage />,
+        element: <CategoryNav />,
       },
       {
         path: "register",

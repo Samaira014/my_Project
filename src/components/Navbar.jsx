@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaShoppingCart, FaTimes, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-[#ffffff] text-blue-950 px-4 sm:px-8 py-2 flex items-center justify-between">
+    <nav className="bg-[#ffffff] text-blue-950 px-4 sm:px-8 py-2 flex items-center justify-between ">
       {/* Left - Logo */}
       <div className="flex items-center">
         <span className="text-xl font-bold tracking-wide mr-4 cursor-pointer">
@@ -25,15 +26,15 @@ export default function Navbar() {
       {/* Center - Search Bar (Desktop only) */}
       <form
         onSubmit={handleSearch}
-        className="hidden md:flex flex-1 max-w-xl mx-4 relative bg-[#ffffff] rounded-2xl"
+        className="hidden md:flex flex-1 max-w-xl mx-4 relative bg-[#f7f7f7] rounded-2xl"
       >
-        <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-950" />
+        <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-950 " />
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for products, brands and more"
-          className="w-full pl-10 pr-4 py-2 rounded-md border-2 border-transparent
+          className="w-full pl-10 pr-4 py-2 border-2 border-transparent rounded-2xl
                      focus:bg-white focus:text-black
                      placeholder-blue-950 text-black shadow-sm"
         />
@@ -60,6 +61,9 @@ export default function Navbar() {
                   <li className="p-2 hover:bg-gray-100 cursor-pointer">
                     My Profile
                   </li>
+                  <Link to="/register" className="block hover:bg-gray-100 cursor-pointer p-2 rounded">
+                    Register
+                  </Link>
                   <li className="p-2 hover:bg-gray-100 cursor-pointer">Orders</li>
                   <li className="p-2 hover:bg-gray-100 cursor-pointer">
                     Wishlist
@@ -170,5 +174,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </nav>
-  );
+  )
 }
