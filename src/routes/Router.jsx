@@ -3,6 +3,8 @@ import RegisterPage from "../components/RegisterPage";
 import LoginPage from "../components/LoginPage";
 import Layout from "../components/Layout";
 import CategoryNav from "../components/CategoryNav";
+import MyProfile from "../pages/MyProfile";
+import Home from "../components/Home";
 
 export const myRoutes = createBrowserRouter([
   {
@@ -10,8 +12,17 @@ export const myRoutes = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, // ✅ This is the default route
-        element: <CategoryNav />,
+        index: true, // ✅ Default route
+        element: (
+          <>
+            <CategoryNav />
+            <Home />
+          </>
+        ),
+      },
+      {
+        path: "myprofile",
+        element: <MyProfile />,
       },
       {
         path: "register",
@@ -24,27 +35,3 @@ export const myRoutes = createBrowserRouter([
     ],
   },
 ]);
-
-
-// import { createBrowserRouter } from "react-router-dom";
-// import RegisterPage from "../components/RegisterPage";
-// import LoginPage from "../components/LoginPage";
-// import Layout from "../components/Layout";
-// //import { Children } from "react";
-
-// export let myRoutes = createBrowserRouter([
-//     {
-//         path: "/",
-//         element: <Layout />,
-//         Children: [
-//             {
-//                 path: "/",
-//                 element: <RegisterPage />,
-//             },
-//             {
-//                 path: "/",
-//                 element: <LoginPage />,
-//             }
-//         ]
-//     }
-// ])

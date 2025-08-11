@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaTruckFast } from "react-icons/fa6";
+import { FaUndoAlt, FaMoneyBillWave } from "react-icons/fa";
 
 const slides = [
   "/images/carausel.jpg",
@@ -18,10 +20,19 @@ export default function Carousel() {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // ✅ Auto change every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000); // 10000ms = 10 seconds
+
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
+
   return (
     <div className="relative w-full bg-gray-100 py-2">
       {/* Carousel Container */}
-      <div className="relative overflow-hidden w-full flex justify-center px-3">
+      <div className="relative overflow-hidden w-full flex justify-center px-8">
         {/* Left Arrow */}
         <button
           onClick={prevSlide}
@@ -59,6 +70,28 @@ export default function Carousel() {
             }`}
           ></button>
         ))}
+      </div>
+
+      {/* Info Bar */}
+      <div className="bg-gray-100 py-3">
+        <div className="text-center">
+          <p className="flex items-center justify-center gap-6 text-gray-700 text-sm font-medium">
+            <span className="flex items-center gap-2">
+              <FaTruckFast className="text-green-600 text-lg " />
+              Fast Delivery
+            </span>
+            <span>|</span>
+            <span className="flex items-center gap-2">
+              <FaUndoAlt className="text-blue-600 text-lg animate-spin-slow" />
+              7 Days Easy Return
+            </span>
+            <span>|</span>
+            <span className="flex items-center gap-2">
+              <FaMoneyBillWave className="text-yellow-600 text-lg animate-pulse" />
+              Cash on Delivery
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );

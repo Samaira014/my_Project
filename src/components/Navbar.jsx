@@ -55,12 +55,12 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full mt-2 bg-white text-black shadow-lg rounded w-48"
+                className="absolute top-full mt-2 bg-white text-black shadow-lg rounded w-48 z-50"
               >
                 <ul>
-                  <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  <Link to="/myprofile" className="block hover:bg-gray-100 cursor-pointer p-2 rounded">
                     My Profile
-                  </li>
+                  </Link>
                   <Link to="/register" className="block hover:bg-gray-100 cursor-pointer p-2 rounded">
                     Register
                   </Link>
