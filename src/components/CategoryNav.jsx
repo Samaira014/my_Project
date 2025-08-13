@@ -8,8 +8,8 @@ const categories = [
   { label: "Electronics", href: null, imgSrc: "/images/laptop2.jpg", alt: "Electronics" },
   { label: "Home & Furniture", href: null, imgSrc: "/images/sofa2.jpg", alt: "Home & Furniture" },
   { label: "TVs & Appliances", href: null, imgSrc: "/images/Appliances.webp", alt: "TVs & Appliances" },
-  { label: "Accessories", href: null, imgSrc: "/images/accessories5.jpg", alt: "Accessories" },
-  { label: "Beauty, Food..", href: null, imgSrc: "/images/toy.png", alt: "Beauty, Food.." },
+  { label: "Accessories", href: null, imgSrc: "/images/accessories.png", alt: "Accessories" },
+  { label: "Beauty, Food..", href: null, imgSrc: "/images/chocklet.png", alt: "Beauty, Food.." },
   { label: "Grocery", href: null, imgSrc: "/images/grocery2.jpg", alt: "Grocery" },
 ];
 

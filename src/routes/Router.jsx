@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import CategoryNav from "../components/CategoryNav";
 import MyProfile from "../pages/MyProfile";
 import Home from "../components/Home";
+import Seller from "../pages/Seller";
 
 export const myRoutes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const myRoutes = createBrowserRouter([
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "seller",
+        element: <Seller />
       },
     ],
   },
