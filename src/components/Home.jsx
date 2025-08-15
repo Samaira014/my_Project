@@ -1,16 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Carousel from "./Carousel";
 import { SiPuma, SiAdidas, SiNike, SiHandm, SiZara, SiReebok } from "react-icons/si";
 
 const Home = () => {
   const categories = [
-    { icon: <img src="/images/men.png" alt="Men" className="w-20 h-20" />, title: "Men" },
-    { icon: <img src="/images/women.png" alt="Women" className="w-20 h-20" />, title: "Women" },
-    { icon: <img src="/images/girl.png" alt="Kids" className="w-20 h-20" />, title: "Kids" },
-    { icon: <img src="/images/accessories.png" alt="Accessories" className="w-20 h-20" />, title: "Accessories" },
-    { icon: <img src="/images/footware.png" alt="Footwear" className="w-20 h-20" />, title: "Footwear" },
-    { icon: <img src="/images/laptop3.png" alt="Electronics" className="w-20 h-20" />, title: "Electronics" },
+    { icon: <img src="/images/men.png" alt="Men" className="w-20 h-20" />, title: "Men", path: "/men" },
+    { icon: <img src="/images/women.png" alt="Women" className="w-20 h-20" />, title: "Women", path: "/women" },
+    { icon: <img src="/images/girl.png" alt="Kids" className="w-20 h-20" />, title: "Kids", path: "/kids" },
+    { icon: <img src="/images/accessories.png" alt="Accessories" className="w-20 h-20" />, title: "Accessories", path: "/accessories" },
+    { icon: <img src="/images/footware.png" alt="Footwear" className="w-20 h-20" />, title: "Footwear", path: "/footwear" },
+    { icon: <img src="/images/laptop3.png" alt="Electronics" className="w-20 h-20" />, title: "Electronics", path: "/electronics" },
   ];
 
   const brandCategories = [
@@ -22,7 +23,6 @@ const Home = () => {
     { icon: <SiReebok size={40} />, title: "Reebok" },
   ];
 
-  // Animation Variants
   const cardVariants = {
     hidden: { opacity: 0, scale: 0.8, y: 20 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4 } },
@@ -40,18 +40,19 @@ const Home = () => {
         <h2 className="text-2xl font-bold mb-6">Shop by Category</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {categories.map((cat, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col items-center bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg transition-all"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              {cat.icon}
-              <p className="text-center text-sm font-medium mt-3">{cat.title}</p>
-            </motion.div>
+            <Link key={index} to={cat.path}>
+              <motion.div
+                className="flex flex-col items-center bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-lg transition-all"
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                {cat.icon}
+                <p className="text-center text-sm font-medium mt-3">{cat.title}</p>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>

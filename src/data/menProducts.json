@@ -1,0 +1,14 @@
+{
+  "shirt": [
+    { "id": 1, "name": "Formal Shirt", "price": 799, "image": "/images/shirt1.jpg" },
+    { "id": 2, "name": "Casual Shirt", "price": 699, "image": "/images/shirt2.jpg" }
+  ],
+  "t-shirt": [
+    { "id": 1, "name": "Graphic Tee", "price": 499, "image": "/images/tshirt1.jpg" },
+    { "id": 2, "name": "Plain Tee", "price": 399, "image": "/images/tshirt2.jpg" }
+  ],
+  "jeans": [
+    { "id": 1, "name": "Blue Denim", "price": 999, "image": "/images/jeans1.jpg" },
+    { "id": 2, "name": "Black Slim Fit", "price": 1099, "image": "/images/jeans2.jpg" }
+  ]
+}
