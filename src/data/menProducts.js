@@ -1,0 +1,110 @@
+export const allProducts = [
+  {
+    id: 1,
+    name: "Formal Shirt",
+    brand: "Arrow",
+    category: "shirt",
+    price: 799,
+    discountPrice: 599,
+    description: "Slim fit formal shirt",
+    inStock: true,
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["#000000", "#FFFFFF"],
+    images: [
+      { type: "image", url: "/images/menShirt.jpg" },
+      { type: "image", url: "/images/shirt1-2.jpg" },
+      { type: "image", url: "/images/shirt1-3.jpg" },
+      { type: "video", url: "/videos/shirt1.mp4" },
+    ]
+  },
+  {
+    id: 2,
+    name: "Casual Denim Shirt",
+    brand: "Levi's",
+    category: "shirt",
+    price: 1299,
+    discountPrice: 999,
+    description: "Comfortable casual denim shirt",
+    inStock: true,
+    sizes: ["M", "L", "XL", "XXL"],
+    colors: ["#1E3A8A", "#94A3B8"],
+    images: [
+      { type: "image", url: "/images/shirt2.jpg" },
+      { type: "image", url: "/images/shirt2-2.jpg" },
+      { type: "image", url: "/images/shirt2-3.jpg" },
+      { type: "video", url: "/videos/shirt2.mp4" },
+    ]
+  },
+  {
+    id: 3,
+    name: "Checked Casual Shirt",
+    brand: "Pepe Jeans",
+    category: "shirt",
+    price: 1099,
+    discountPrice: 849,
+    description: "Trendy checked casual shirt",
+    inStock: true,
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["#DC2626", "#FACC15", "#FFFFFF"],
+    images: [
+      { type: "image", url: "/images/shirt3.jpg" },
+      { type: "image", url: "/images/shirt3-2.jpg" },
+      { type: "image", url: "/images/shirt3-3.jpg" },
+      { type: "video", url: "/videos/shirt3.mp4" },
+    ]
+  },
+  {
+    id: 4,
+    name: "Linen Summer Shirt",
+    brand: "Van Heusen",
+    category: "shirt",
+    price: 999,
+    discountPrice: 749,
+    description: "Lightweight linen shirt for summer",
+    inStock: true,
+    sizes: ["M", "L", "XL"],
+    colors: ["#F3F4F6", "#94A3B8"],
+    images: [
+      { type: "image", url: "/images/shirt4.jpg" },
+      { type: "image", url: "/images/shirt4-2.jpg" },
+      { type: "image", url: "/images/shirt4-3.jpg" },
+      { type: "video", url: "/videos/shirt4.mp4" },
+    ]
+  },
+  {
+    id: 5,
+    name: "Oxford Casual Shirt",
+    brand: "Peter England",
+    category: "shirt",
+    price: 899,
+    discountPrice: 699,
+    description: "Classic oxford casual shirt",
+    inStock: true,
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["#2563EB", "#FFFFFF", "#F87171"],
+    images: [
+      { type: "image", url: "/images/shirt5.jpg" },
+      { type: "image", url: "/images/shirt5-2.jpg" },
+      { type: "image", url: "/images/shirt5-3.jpg" },
+      { type: "video", url: "/videos/shirt5.mp4" },
+    ]
+  },
+  {
+    id: 6,
+    name: "Oxford Casual Shirt",
+    brand: "Peter England",
+    category: "shirt",
+    price: 899,
+    discountPrice: 699,
+    description: "Classic oxford casual shirt",
+    inStock: true,
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["#2563EB", "#FFFFFF", "#F87171"],
+    images: [
+      { type: "image", url: "/images/shirt5.jpg" },
+      { type: "image", url: "/images/shirt5-2.jpg" },
+      { type: "image", url: "/images/shirt5-3.jpg" },
+      { type: "video", url: "/videos/shirt5.mp4" },
+    ]
+  }
+];

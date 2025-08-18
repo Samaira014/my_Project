@@ -10,8 +10,11 @@ import Seller from "../pages/Seller";
 import MenItems from "../pages/MenItems";
 import ProductDetails from "../pages/ProductDetails";
 import ProductList from "../pages/ProductList";
-
-
+import CartPage from "../pages/CartPage";
+import CheckoutPage from "../pages/CheckoutPage";
+import WishlistPage from "../pages/WishlistPage";
+import OrderDetails from "../pages/OrderDetails";
+import Orders from "../pages/Orders";
 
 export const myRoutes = createBrowserRouter([
   {
@@ -32,15 +35,23 @@ export const myRoutes = createBrowserRouter([
       { path: "login", element: <LoginPage /> },
       { path: "seller", element: <Seller /> },
 
+      { path: "cart", element: <CartPage /> },
+      { path: "checkout", element: <CheckoutPage /> },
+      { path: "wishlist", element: <WishlistPage /> },
+      {
+        path: "/orders", element: <Orders />, },
+      {
+        path: "/order/:id", element: <OrderDetails />, },
+
       // Men category routes
       {
         path: "men",
         children: [
           { index: true, element: <MenItems /> },
-          { path: ":category", element: <ProductList /> }, // ✅ shows list of products
-          { path: ":category/:id", element: <ProductDetails /> }
+          { path: ":category", element: <ProductList /> }, // Product list
+          { path: ":category/product/:shirtId", element: <ProductDetails /> }, // Product details
         ],
-      }
+      },
     ],
   },
 ]);

@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaShoppingCart, FaTimes, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext"; // ✅ useCart instead of CartContext
 
 export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [query, setQuery] = useState("");
+
+  const { cart, removeFromCart } = useCart(); // ✅ correct usage
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -58,16 +61,25 @@ export default function Navbar() {
                 className="absolute top-full mt-2 bg-white text-black shadow-lg rounded w-48 z-50"
               >
                 <ul>
-                  <Link to="/myprofile" className="block hover:bg-gray-100 cursor-pointer p-2 rounded">
+                  <Link
+                    to="/myprofile"
+                    className="block hover:bg-gray-100 cursor-pointer p-2 rounded"
+                  >
                     My Profile
                   </Link>
-                  <Link to="/register" className="block hover:bg-gray-100 cursor-pointer p-2 rounded">
+                  <Link
+                    to="/register"
+                    className="block hover:bg-gray-100 cursor-pointer p-2 rounded"
+                  >
                     Register
                   </Link>
                   <li className="p-2 hover:bg-gray-100 cursor-pointer">Orders</li>
-                  <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  <Link
+                    to="/wishlist"
+                    className="block hover:bg-gray-100 cursor-pointer p-2 rounded"
+                  >
                     Wishlist
-                  </li>
+                  </Link>
                   <li className="p-2 hover:bg-gray-100 cursor-pointer">
                     Logout
                   </li>
@@ -82,7 +94,7 @@ export default function Navbar() {
           className="flex items-center gap-1"
           onClick={() => setCartOpen(true)}
         >
-          <FaShoppingCart /> Cart
+          <FaShoppingCart /> Cart ({cart.length})
         </button>
 
         {/* Become a Seller */}
@@ -98,62 +110,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween" }}
-            className="fixed top-0 right-0 w-64 h-full bg-white text-black shadow-lg z-50 p-4"
-          >
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-lg font-bold">Menu</span>
-              <button onClick={() => setMobileMenuOpen(false)}>
-                <FaTimes size={20} />
-              </button>
-            </div>
-
-            {/* Mobile Search */}
-            <form
-              onSubmit={handleSearch}
-              className="flex items-center border border-gray-300 rounded-md mb-4"
-            >
-              <FaSearch className="ml-2 text-gray-500" />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search"
-                className="flex-1 p-2 outline-none"
-              />
-            </form>
-
-            <ul className="space-y-4">
-              <li className="hover:underline">Login</li>
-              <li className="hover:underline">Orders</li>
-              <li className="hover:underline">Wishlist</li>
-              <li
-                className="hover:underline cursor-pointer"
-                onClick={() => {
-                  setCartOpen(true);
-                  setMobileMenuOpen(false);
-                }}
-              >
-                Cart
-              </li>
-              <li>
-                <a href="/seller" className="hover:underline">
-                  Become a Seller
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Cart Drawer */}
+      {/* ✅ Cart Drawer */}
       <AnimatePresence>
         {isCartOpen && (
           <motion.div
@@ -161,7 +118,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween" }}
-            className="fixed top-0 right-0 w-80 h-full bg-white text-black shadow-lg z-50 p-4"
+            className="fixed top-0 right-0 w-80 h-full bg-white text-black shadow-lg z-50 p-4 flex flex-col"
           >
             <div className="flex justify-between items-center mb-4">
               <span className="text-lg font-bold">Your Cart</span>
@@ -169,10 +126,46 @@ export default function Navbar() {
                 <FaTimes size={20} />
               </button>
             </div>
-            <p>Your cart is empty.</p>
+
+            {cart.length === 0 ? (
+              <p className="flex-1">Your cart is empty.</p>
+            ) : (
+              <>
+                <ul className="space-y-3 flex-1 overflow-y-auto">
+                  {cart.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center justify-between border-b pb-2"
+                    >
+                      <div>
+                        <p className="font-semibold">{item.name}</p>
+                        <p className="text-sm text-gray-600">
+                          ₹{item.price} x {item.qty} {/* ✅ use qty from context */}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-red-500 text-sm"
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* ✅ View Cart Button */}
+                <Link
+                  to="/cart"
+                  onClick={() => setCartOpen(false)}
+                  className="mt-4 bg-blue-600 text-white text-center py-2 rounded-lg hover:bg-blue-700 transition"
+                >
+                  View Cart
+                </Link>
+              </>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
     </nav>
-  )
+  );
 }
