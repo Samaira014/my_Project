@@ -25,10 +25,16 @@ export const CartProvider = ({ children }) => {
   };
 
   // Update qty
-  const updateQuantity = (id, quantity) => {
-    setCart((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+  const updateQuantity = (id, newQty) => {
+    if (newQty <= 0) {
+      setCart((prev) => prev.filter((item) => item.id !== id)); // remove item if qty=0
+    } else {
+      setCart((prev) =>
+        prev.map((item) =>
+          item.id === id ? { ...item, quantity: newQty } : item
+        )
+      );
+    }
   };
 
   // Clear cart
